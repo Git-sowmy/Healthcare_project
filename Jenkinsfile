@@ -5,11 +5,15 @@ pipeline {
         }
     }
 
+environment {
+    PATH = "/opt/apache-maven-3.9.3/bin:$PATH"
+}    
     stages {
-        stage('clone code') {
+        stage('Build') {
             steps {
-                git branch: 'main', url: 'https://github.com/Git-sowmy/Healthcare_project.git'
+                sh 'mvn clean deploy'
             }
         }
     }
 }
+
